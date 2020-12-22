@@ -1,5 +1,7 @@
 package it.solving.computercomponentrest.dto;
 
+import javax.validation.Valid;
+import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
 
 import com.sun.istack.NotNull;
@@ -7,19 +9,16 @@ import com.sun.istack.NotNull;
 public class DeviceInsertDto {
 	
 				
-		@NotEmpty
-		@NotNull
+		@NotBlank
 		private String brand;
 		
-		@NotEmpty
-		@NotNull
+		@NotBlank
 		private String code;
 		
-		@NotEmpty
-		@NotNull
+		@NotBlank
 		private String description;
 		
-		
+		@Valid
 		private ComputerDto computerDto;
 
 		

@@ -3,16 +3,12 @@ package it.solving.computercomponentrest.dto;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.validation.Valid;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.NotNull;
 
-
-public class ComputerDto {
+public class ComputerInsertDto {
 	
-	@NotNull
-	private Integer id;
+
 	
 	@NotBlank
 	private String brand;
@@ -20,18 +16,14 @@ public class ComputerDto {
 	@NotBlank
 	private String description;
 	
-	@Valid
 	@NotEmpty
 	private List<DeviceDto> devicesDto = new ArrayList<DeviceDto>();
+	
+	
 
 
-	public Integer getId() {
-		return id;
-	}
-
-
-	public void setId(Integer id) {
-		this.id = id;
+	public ComputerInsertDto() {
+		super();
 	}
 
 
@@ -67,5 +59,4 @@ public class ComputerDto {
 
 	
 	
-
 }

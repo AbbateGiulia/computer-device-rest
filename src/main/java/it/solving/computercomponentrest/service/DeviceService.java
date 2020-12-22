@@ -33,7 +33,7 @@ public class DeviceService {
 
 	public DeviceDto getById(Integer id) {
 		try {
-			return deviceMapper.convertEntityToDto(deviceRepository.findById(id).get());
+			return deviceMapper.convertEntityToDto2(deviceRepository.findById(id).get());
 		}catch(Exception e){
 			throw e;
 		}		

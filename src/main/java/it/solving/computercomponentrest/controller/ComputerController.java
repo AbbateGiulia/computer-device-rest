@@ -20,76 +20,78 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import it.solving.computercomponentrest.dto.DeviceDto;
-import it.solving.computercomponentrest.dto.DeviceInsertDto;
+import it.solving.computercomponentrest.dto.ComputerDto;
+import it.solving.computercomponentrest.dto.ComputerGetDto;
+import it.solving.computercomponentrest.dto.ComputerInsertDto;
 import it.solving.computercomponentrest.dto.ErrorDto;
 import it.solving.computercomponentrest.exception.BindingResultException;
 import it.solving.computercomponentrest.exception.IdException;
-import it.solving.computercomponentrest.service.DeviceService;
+import it.solving.computercomponentrest.service.ComputerService;
 
 @RestController
-@RequestMapping("/api/device")
-public class DeviceController {
-
+@RequestMapping("/api/computer")
+public class ComputerController {
+	
 	@Autowired
-	private DeviceService deviceService;
-
+	private ComputerService computerService;
+	
 	@GetMapping("/")
-	public ResponseEntity<List<DeviceDto>> getAll() {
+	public ResponseEntity<List<ComputerGetDto>> getAll() {
 
-		List<DeviceDto> devicesDto = deviceService.getAll();
+		List<ComputerGetDto> computerGetDto = computerService.getAll();
 
-		return ResponseEntity.status(HttpStatus.OK).body(devicesDto);
+		return ResponseEntity.status(HttpStatus.OK).body(computerGetDto);
 	}
-
+	
 	@PostMapping("/")
-	public ResponseEntity<DeviceInsertDto> postDevice(@Valid @RequestBody DeviceInsertDto deviceInsertDto,
+	public ResponseEntity<ComputerInsertDto> postComputer(@Valid @RequestBody ComputerInsertDto computerInsertDto,
 			BindingResult bindingResult) throws Exception, BindingResultException {
 
 		if (bindingResult.hasErrors()) {
 			throw new BindingResultException(bindingResult);
 		}
 
-		deviceService.save(deviceInsertDto);
+		computerService.save(computerInsertDto);
 
-		return ResponseEntity.status(HttpStatus.OK).body(deviceInsertDto);
+		return ResponseEntity.status(HttpStatus.OK).body(computerInsertDto);
+	}
+	
+	@GetMapping("/{id}")
+	public ResponseEntity<ComputerGetDto> getDevice(@PathVariable Integer id) throws Exception {
+
+		ComputerGetDto computerGetDto = computerService.getById(id);
+
+		return ResponseEntity.status(HttpStatus.OK).body(computerGetDto);
 	}
 	
 	@PutMapping("/")
-	public ResponseEntity<DeviceDto> putDevice(@Valid @RequestBody DeviceDto deviceDto,
+	public ResponseEntity<ComputerDto> putDevice(@Valid @RequestBody ComputerDto computerDto,
 			BindingResult bindingResult) throws Exception, BindingResultException, IdException {
 		 
-		if(deviceService.update(deviceDto)==null) {
-			throw new IdException("Id iensistente");
+		if(computerService.update(computerDto)==null) {
+			throw new IdException("Id inesistente");
 		}
 		if (bindingResult.hasErrors()) {
 			
 			throw new BindingResultException(bindingResult);
 		}
 
-		deviceService.update(deviceDto);
+		
 
-		return ResponseEntity.status(HttpStatus.OK).body(deviceDto);
-	}
-
-	@GetMapping("/{id}")
-	public ResponseEntity<DeviceDto> getDevice(@PathVariable Integer id) throws Exception {
-
-		DeviceDto deviceDto = deviceService.getById(id);
-
-		return ResponseEntity.status(HttpStatus.OK).body(deviceDto);
+		return ResponseEntity.status(HttpStatus.OK).body(computerDto);
 	}
 	
 	@DeleteMapping("/{id}")
-	public ResponseEntity<DeviceDto> deleteDevice(@PathVariable Integer id) throws Exception {
+	public ResponseEntity<ComputerDto> deleteDevice(@PathVariable Integer id) throws Exception {
 
-		if(deviceService.delete(id)==false) {
-			throw new IdException("Id iensistente");
+		if(computerService.delete(id)==false) {
+			throw new IdException("Id inesistente");
 		}
 
 		return ResponseEntity.status(HttpStatus.OK).build();
 	}
-
+	
+	
 //	@ExceptionHandler(Exception.class)
 //	public ResponseEntity<ErrorDto> handleException(Exception e) {
 //		List<String> errors = new ArrayList<String>();

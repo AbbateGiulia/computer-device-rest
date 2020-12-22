@@ -14,6 +14,9 @@ public class DeviceMapper extends AbstractMapper<Device, DeviceDto> {
 	
 	@Autowired
 	private ComputerMapper computerMapper;
+	
+	@Autowired
+	private ComputerGetMapper computerGetMapper;
 
 	@Override
 	public DeviceDto convertEntityToDto(Device entity) {
@@ -28,6 +31,21 @@ public class DeviceMapper extends AbstractMapper<Device, DeviceDto> {
 		deviceDto.setCode(entity.getCode());
 		deviceDto.setDescription(entity.getDescription());
 		deviceDto.setComputerDto(computerMapper.convertEntityToDto(entity.getComputer()));
+
+		return deviceDto;
+	}
+	
+	public DeviceDto convertEntityToDto2(Device entity) {
+		if (entity == null) {
+			return null;
+		}
+
+		DeviceDto deviceDto = new DeviceDto();
+		
+		deviceDto.setId(entity.getId());
+		deviceDto.setBrand(entity.getBrand());
+		deviceDto.setCode(entity.getCode());
+		deviceDto.setDescription(entity.getDescription());
 
 		return deviceDto;
 	}
