@@ -1,27 +1,18 @@
 {
 	"info": {
-		"_postman_id": "e83c16d2-59e5-47ab-b4b0-b04cb3b2e08f",
-		"name": "RestTest",
+		"_postman_id": "547f75ba-6f6e-45d1-b28b-5da1c9468784",
+		"name": "ComputerComponent",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
 		{
-			"name": "api/libreria",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": null
-			},
-			"response": []
-		},
-		{
-			"name": "/api/libreria",
+			"name": "http://localhost:8080/api/device/",
 			"request": {
 				"method": "POST",
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \r\n    \"genere\": \"Avventura2\",\r\n    \"slot\": \"4\",\r\n    \"libri\": [\"ok\", \"HucklberryFinn\"]\r\n}",
+					"raw": "{\r\n   \r\n    \r\n    \r\n    \"description\": \"monitor\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -29,7 +20,7 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:8080/api/libreria",
+					"raw": "http://localhost:8080/api/device/",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -37,57 +28,7 @@
 					"port": "8080",
 					"path": [
 						"api",
-						"libreria"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "/api/libreria/2",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "http://localhost:8080/api/libreria/2",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8080",
-					"path": [
-						"api",
-						"libreria",
-						"2"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "/api/libreria/",
-			"request": {
-				"method": "PUT",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n    \"id\": 2,\r\n    \"genere\" : \"bellapete\",\r\n    \"slot\": \"4\",\r\n    \"libri\":\r\n    [\"ciao\", \"ciaone\"]\r\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "http://localhost:8080/api/libreria/",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8080",
-					"path": [
-						"api",
-						"libreria",
+						"device",
 						""
 					]
 				}
@@ -95,12 +36,12 @@
 			"response": []
 		},
 		{
-			"name": "/api/libreria/id",
+			"name": "http://localhost:8080/api/device/ id",
 			"request": {
-				"method": "DELETE",
+				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:8080/api/libreria/3",
+					"raw": "http://localhost:8080/api/device/ 9",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -108,8 +49,80 @@
 					"port": "8080",
 					"path": [
 						"api",
-						"libreria",
-						"3"
+						"device",
+						" 9"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/api/device/",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n   \r\n    \"brand\": \"intel\",\r\n    \"code\": \"34frt67\",\r\n    \"description\" : \"monitor\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/device/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"device",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/api/device/",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/device/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"device",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/api/device/ id",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/device/ id",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"device",
+						" id"
 					]
 				}
 			},
