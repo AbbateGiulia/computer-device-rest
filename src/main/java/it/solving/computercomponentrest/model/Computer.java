@@ -11,6 +11,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
+
 @Entity
 public class Computer {
 	
@@ -59,7 +60,7 @@ public class Computer {
 		public List<Device> getDevices() {
 			return devices;
 		}
-
+		
 		public void setDevices(List<Device> devices) {
 			this.devices = devices;
 		}

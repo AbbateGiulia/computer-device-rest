@@ -15,8 +15,7 @@ public class DeviceMapper extends AbstractMapper<Device, DeviceDto> {
 	@Autowired
 	private ComputerMapper computerMapper;
 	
-	@Autowired
-	private ComputerGetMapper computerGetMapper;
+	
 
 	@Override
 	public DeviceDto convertEntityToDto(Device entity) {

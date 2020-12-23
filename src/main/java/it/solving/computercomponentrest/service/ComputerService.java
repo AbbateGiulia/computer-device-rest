@@ -8,10 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import it.solving.computercomponentrest.dto.ComputerDto;
-import it.solving.computercomponentrest.dto.ComputerGetDto;
 import it.solving.computercomponentrest.dto.ComputerInsertDto;
 import it.solving.computercomponentrest.dto.DeviceDto;
-import it.solving.computercomponentrest.mapper.ComputerGetMapper;
 import it.solving.computercomponentrest.mapper.ComputerMapper;
 import it.solving.computercomponentrest.model.Computer;
 import it.solving.computercomponentrest.model.Device;
@@ -30,8 +28,6 @@ public class ComputerService {
 	@Autowired
 	private ComputerMapper computerMapper;
 	
-	@Autowired
-	private ComputerGetMapper computerGetMapper;
 
 	public Computer save(ComputerInsertDto dto)  {
 		Computer computer = computerMapper.convertDtoToEntity(dto);
@@ -48,17 +44,17 @@ public class ComputerService {
 
 }
 
-	public List<ComputerGetDto> getAll() {
+	public List<ComputerDto> getAll() {
 		try {
-			return computerGetMapper.convertEntityToDto(computerRepository.findAll());
+			return computerMapper.convertEntityToDto(computerRepository.findAll());
 		}catch(Exception e){
 			throw e;
 		}	
 	}
 
-	public ComputerGetDto getById(Integer id) {
+	public ComputerDto getById(Integer id) {
 		try {
-			return computerGetMapper.convertEntityToDto(computerRepository.findById(id).get());
+			return computerMapper.convertEntityToDto(computerRepository.findById(id).get());
 		}catch(Exception e){
 			throw e;
 		}	

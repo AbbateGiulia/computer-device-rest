@@ -50,6 +50,9 @@
             <artifactId>hibernate-validator</artifactId>
             <version>6.1.6.Final</version><!--$NO-MVN-MAN-VER$-->
         </dependency>
+        
+       
+    
 	</dependencies>
 
 	<build>

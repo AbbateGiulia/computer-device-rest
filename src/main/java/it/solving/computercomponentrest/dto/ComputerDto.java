@@ -9,6 +9,7 @@ import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 
 
+
 public class ComputerDto {
 	
 	@NotNull
@@ -19,6 +20,7 @@ public class ComputerDto {
 	
 	@NotBlank
 	private String description;
+	
 	
 	@Valid
 	@NotEmpty

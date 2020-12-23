@@ -1,8 +1,6 @@
 package it.solving.computercomponentrest.controller;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 import javax.validation.Valid;
 
@@ -11,7 +9,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -21,9 +18,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import it.solving.computercomponentrest.dto.ComputerDto;
-import it.solving.computercomponentrest.dto.ComputerGetDto;
 import it.solving.computercomponentrest.dto.ComputerInsertDto;
-import it.solving.computercomponentrest.dto.ErrorDto;
 import it.solving.computercomponentrest.exception.BindingResultException;
 import it.solving.computercomponentrest.exception.IdException;
 import it.solving.computercomponentrest.service.ComputerService;
@@ -36,11 +31,11 @@ public class ComputerController {
 	private ComputerService computerService;
 	
 	@GetMapping("/")
-	public ResponseEntity<List<ComputerGetDto>> getAll() {
+	public ResponseEntity<List<ComputerDto>> getAll() {
 
-		List<ComputerGetDto> computerGetDto = computerService.getAll();
+		List<ComputerDto> computerDto = computerService.getAll();
 
-		return ResponseEntity.status(HttpStatus.OK).body(computerGetDto);
+		return ResponseEntity.status(HttpStatus.OK).body(computerDto);
 	}
 	
 	@PostMapping("/")
@@ -57,11 +52,11 @@ public class ComputerController {
 	}
 	
 	@GetMapping("/{id}")
-	public ResponseEntity<ComputerGetDto> getDevice(@PathVariable Integer id) throws Exception {
+	public ResponseEntity<ComputerDto> getDevice(@PathVariable Integer id) throws Exception {
 
-		ComputerGetDto computerGetDto = computerService.getById(id);
+		ComputerDto computerDto = computerService.getById(id);
 
-		return ResponseEntity.status(HttpStatus.OK).body(computerGetDto);
+		return ResponseEntity.status(HttpStatus.OK).body(computerDto);
 	}
 	
 	@PutMapping("/")

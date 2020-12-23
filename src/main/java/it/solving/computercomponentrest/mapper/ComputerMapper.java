@@ -5,7 +5,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import it.solving.computercomponentrest.dto.ComputerDto;
-import it.solving.computercomponentrest.dto.ComputerGetDto;
 import it.solving.computercomponentrest.dto.ComputerInsertDto;
 import it.solving.computercomponentrest.model.Computer;
 
@@ -14,6 +13,9 @@ public class ComputerMapper extends AbstractMapper<Computer, ComputerDto> {
 	
 	@Autowired
 	DeviceMapper deviceMapper;
+	
+	@Autowired
+	DeviceGetMapper deviceGetMapper;
 
 	@Override
 	public ComputerDto convertEntityToDto(Computer entity) {
@@ -25,7 +27,7 @@ public class ComputerMapper extends AbstractMapper<Computer, ComputerDto> {
 		computerDto.setBrand(entity.getBrand());
 		computerDto.setDescription(entity.getDescription());
 		computerDto.setId(entity.getId());
-		computerDto.setDevicesDto(deviceMapper.convertEntityToDto(entity.getDevices()));
+		computerDto.setDevicesDto(deviceGetMapper.convertEntityToDto(entity.getDevices()));
 
 		return computerDto;
 	}
