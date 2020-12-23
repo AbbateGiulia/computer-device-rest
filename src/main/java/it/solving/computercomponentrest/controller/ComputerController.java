@@ -40,7 +40,7 @@ public class ComputerController {
 	
 	@PostMapping("/")
 	public ResponseEntity<ComputerInsertDto> postComputer(@Valid @RequestBody ComputerInsertDto computerInsertDto,
-			BindingResult bindingResult) throws Exception, BindingResultException {
+			BindingResult bindingResult) throws Exception{
 
 		if (bindingResult.hasErrors()) {
 			throw new BindingResultException(bindingResult);
@@ -52,7 +52,7 @@ public class ComputerController {
 	}
 	
 	@GetMapping("/{id}")
-	public ResponseEntity<ComputerDto> getDevice(@PathVariable Integer id) throws Exception {
+	public ResponseEntity<ComputerDto> getDevice(@PathVariable Integer id) {
 
 		ComputerDto computerDto = computerService.getById(id);
 
@@ -61,7 +61,7 @@ public class ComputerController {
 	
 	@PutMapping("/")
 	public ResponseEntity<ComputerDto> putDevice(@Valid @RequestBody ComputerDto computerDto,
-			BindingResult bindingResult) throws Exception, BindingResultException, IdException {
+			BindingResult bindingResult) throws Exception {
 		 
 		if(computerService.update(computerDto)==null) {
 			throw new IdException("Id inesistente");

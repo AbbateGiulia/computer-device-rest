@@ -40,7 +40,7 @@ public class DeviceController {
 
 	@PostMapping("/")
 	public ResponseEntity<DeviceInsertDto> postDevice(@Valid @RequestBody DeviceInsertDto deviceInsertDto,
-			BindingResult bindingResult) throws Exception, BindingResultException {
+			BindingResult bindingResult) throws Exception {
 
 		if (bindingResult.hasErrors()) {
 			throw new BindingResultException(bindingResult);
@@ -53,10 +53,10 @@ public class DeviceController {
 	
 	@PutMapping("/")
 	public ResponseEntity<DeviceDto> putDevice(@Valid @RequestBody DeviceDto deviceDto,
-			BindingResult bindingResult) throws Exception, BindingResultException, IdException {
+			BindingResult bindingResult) throws Exception {
 		 
 		if(deviceService.update(deviceDto)==null) {
-			throw new IdException("Id iensistente");
+			throw new IdException("Id inesistente");
 		}
 		if (bindingResult.hasErrors()) {
 			
